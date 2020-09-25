@@ -11,15 +11,37 @@ export const addTask = (user, initialDate, finishDate, complete) => ({
     }
 });
 
-export const fetchDishes = () => (dispatch) =>  {
-    dispatch(dishesLoading(true));
+export const fetchTasks = () => (dispatch) =>  {
+    dispatch(tasksLoading(true));
 
     setTimeout(()=>{
         
     }, 2000)
 }
 
-export const dishesLoading = () => ({
-    type: ActionTypes.DISHES_LOADING,
+export const tasksLoading = () => ({
+    type: ActionTypes.TASK_LOADING,
+});
+
+export const taskDelete = () => ({
+    type: ActionTypes.TASK_DELETE,
+});
+
+export const taskEdit = () => ({
+    type: ActionTypes.TASK_EDIT,
+});
+
+export const taskConclude = () => ({
+    type: ActionTypes.TASK_CONCLUDE,
+});
+
+//Ações de Login
+
+export const userLogin = () => ({
+    type: ActionTypes.USER_LOGIN,
+});
+
+export const userRegister = () => ({
+    type: ActionTypes.USER_REGISTRATION,
 });
 

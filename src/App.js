@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 
-import AppRouter from "./Routes/AppRoutes";
-import Navigation from "./Components/common/Navigation";
+import AppRoutes from "./Routes/AppRoutes";
 
 
 function App() {
   return (
     <Router>
       <div>
-        <Navigation />
-        <AppRouter />
+        <AppRoutes />
       </div>
     </Router>
   );
