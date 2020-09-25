@@ -1,0 +1,20 @@
+.header {
+  background-image: url('../../svg/codelines.svg');
+  backdrop-filter: #303030;
+  background-color: #303030;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: var(--clr-light);
+
+  display: flex;
+  
+
+  height: 60vh;
+  width: 100%;
+}
+.header__cover {
+  width: 40%;
+  max-width: 350px;
+  
+}
