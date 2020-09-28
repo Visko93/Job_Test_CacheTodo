@@ -1,11 +1,10 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-
-// import { Provider } from 'react-redux';
-// import { ConfigureStore } from '../Redux/Store/store';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
+import { Provider } from "react-redux";
+import store from '../Redux/Store/index'
 
 import Navigation from "../Components/common/Navigation";
 import Home from '../Pages/Home'
@@ -20,10 +19,12 @@ function AppRoutes () {
       <Navigation />
       <ToastContainer autoClose={3000} hideProgressBar />
       <Switch>
-        {/* <Provider> */}
+        {/* componentes que terão acesso a store */}
+        <Provider store={store}>
           <Route exact path='/' component={Home} />
           <Route exact path='/dashboard' component={Dashboard} />
-        {/* </Provider> */}
+        </Provider>
+
         <Route exact path='/about' component={About}/>
         <Route component={NotFound} />
       </Switch>

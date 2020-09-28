@@ -1,0 +1,26 @@
+{
+   "users": [
+     {
+       "user_id": 1,
+       "user_name": "Vinicius",
+       "user_password": "125",
+       "user_data": {
+          "user_email": "v@gmail.com",
+          "user_cep": 81900350,
+          "user_number": "890",
+          "user_birth": "17/11/1993",
+          "user_state": "PR",
+          "user_city": "Curitiba"
+       } ,
+       "tasks": [
+         {
+           "user_id": 1,
+           "task_title": "Task1",
+           "task_description": "describe the task",
+           "task_status": "PENDING"
+         }
+       ]
+     }
+   ]
+
+}
