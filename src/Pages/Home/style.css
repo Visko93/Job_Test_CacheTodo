@@ -13,8 +13,13 @@
   height: 60vh;
   width: 100%;
 }
-.header__cover {
-  width: 40%;
-  max-width: 350px;
-  
+.header__container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  margin-top: 10vh;
+  margin-left: 2em;
+}
+.header__cover{
+  width: 45%;
 }

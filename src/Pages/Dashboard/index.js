@@ -1,11 +1,16 @@
 import React from "react";
 
+import NavPlaceHolder from "../../Components/common/NavPlaceholder";
+
 
 function Dashboard () {
   return (
-    <div className="dashboard">
-      Dashboard
-    </div>
+    <>
+      <NavPlaceHolder />
+      <div className="dashboard">
+        Dashboard
+      </div>
+    </>
   )
 }
 
