@@ -1,0 +1,77 @@
+{
+   "users": [
+     {
+       "user_id": 1,
+       "user_name": "Vinicius",
+       "user_password": "125",
+       "user_data": {
+          "user_email": "v@gmail.com",
+          "user_cep": 81900350,
+          "user_number": "890",
+          "user_birth": "17/11/1993",
+          "user_state": "PR",
+          "user_city": "Curitiba"
+        }
+     }
+   ],
+   "tasks": [
+    {
+      "user_id": 1,
+      "user_tasks": [
+        {
+          "task_id": 1,
+          "task_title": "Task1",
+          "task_description": "describe the task",
+          "task_status": "PENDING",
+          "task_start": "27/08/2020",
+          "task_deadline": "30/08/2020"
+        },
+        {
+          "task_id": 3,
+          "task_title": "Task2",
+          "task_description": "fake second task",
+          "task_status": "PENDING",
+          "task_start": "27/08/2020",
+          "task_deadline": "30/08/2020"
+        },
+        {
+          "task_id": 2,
+          "task_title": "Task3",
+          "task_description": "fake trhid taks",
+          "task_status": "COMPLETE",
+          "task_start": "27/08/2020",
+          "task_deadline": "30/08/2020"
+        }
+      ]
+    },
+    {
+      "user_id": 2,
+      "user_tasks": [
+        {
+          "task_id": 2,
+          "task_title": "Task2",
+          "task_description": "describe the task",
+          "task_status": "PENDING",
+          "task_start": "27/08/2020",
+          "task_deadline": "30/08/2020"
+        },
+        {
+          "task_id": 3,
+          "task_title": "Task7",
+          "task_description": "fake second task",
+          "task_status": "PENDING",
+          "task_start": "27/08/2020",
+          "task_deadline": "30/08/2020"
+        },
+        {
+          "task_id": 2,
+          "task_title": "Task8",
+          "task_description": "fake trhid taks",
+          "task_status": "COMPLETE",
+          "task_start": "27/08/2020",
+          "task_deadline": "30/08/2020"
+        }
+      ]
+    }
+  ]
+}

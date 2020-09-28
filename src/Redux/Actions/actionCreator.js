@@ -1,23 +1,14 @@
 import * as ActionTypes from './ActionTypes';
 
 
-export const addTask = (user, initialDate, finishDate, complete) => ({
-    type: ActionTypes.ADD_TASK,
-    payload: {
-        user: user,
-        initialDate: initialDate,
-        finishDate: finishDate,
-        complete: complete
-    }
-});
-
-export const fetchTasks = () => (dispatch) =>  {
-    dispatch(tasksLoading(true));
-
-    setTimeout(()=>{
-        
-    }, 2000)
-}
+export const addTask = task => (
+    {
+        type: ActionTypes.TASK_ADD,
+        payload: {
+            task
+        }
+    }    
+);
 
 export const tasksLoading = () => ({
     type: ActionTypes.TASK_LOADING,
