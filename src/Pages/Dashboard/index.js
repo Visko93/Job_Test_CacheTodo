@@ -81,7 +81,6 @@ function Dashboard () {
                   <input 
                     name='task_deadline' 
                     type="date"
-                    readOnly
                     value={newTask.task_deadline}
                     min={newTask.task_start}
                     onChange={handleInputChange}
