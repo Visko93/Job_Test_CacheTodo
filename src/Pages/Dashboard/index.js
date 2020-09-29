@@ -10,17 +10,27 @@ import { addTask } from "../../Redux/Actions/actionCreator";
 function Dashboard () {
   const user_id = 1
 
-  const [tasks, setTasks] = useState([])
-  const [newTask, setNewTask] = useState({
+
+  const INITIAL_STATE = {
     user_id: user_id,
     task_title: '',
     task_description: '',
-    task_start: Date(),
-    task_deadline: ''
-  })
-
+    task_start: new Date().toISOString().substring(0,10),
+    task_deadline: '',
+  }
+  
+  const [tasks, setTasks] = useState([])
+  const [newTask, setNewTask] = useState(INITIAL_STATE)
+  
   const handleInputChange = e => {
-    const {name, value} = e.target
+    const {name, value, type} = e.target
+    // if(type === 'date') {
+    //   setNewTask({
+    //     ...newTask,
+    //     [name]: new Date(value)
+    //   })
+
+    // }
     setNewTask({
       ...newTask,
       [name]: value
@@ -38,7 +48,9 @@ function Dashboard () {
   //Action de adicionar as tasks
   const handleAddTask = useCallback((task)=>{
     dispatch(addTask(task))
-  },[dispatch])
+    setNewTask(INITIAL_STATE)
+    
+  },[INITIAL_STATE, dispatch])
   
   return (
     <>
@@ -87,9 +99,10 @@ function Dashboard () {
                   />
                 </td>
                 <td>
-                <input 
+                <textarea 
                     name='task_description' 
                     type="text"
+                    placeholder='Description'
                     value={newTask.task_description}
                     onChange={handleInputChange}
                   />
@@ -97,11 +110,10 @@ function Dashboard () {
                 <td>
                   <button 
                     type='button'
-                    onClick={() => handleAddTask(FormData)}
+                    onClick={() => handleAddTask(newTask)}
                   >
                     Add
                   </button>
-                {console.log(newTask.task_start)}
                 </td>
               </tr>  
             {tasks.map(task => (
