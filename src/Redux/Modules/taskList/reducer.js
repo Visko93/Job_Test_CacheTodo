@@ -19,8 +19,6 @@ const taskList = (state = INITIAL_STATE, action) => {
                 task_start,
                 task_deadline} = action.payload
           
-          console.log(state.tasks)
-
           // utiliza a propriedade draft para gerar o novo estado
           draft.tasks.push({
               task_id: 1,

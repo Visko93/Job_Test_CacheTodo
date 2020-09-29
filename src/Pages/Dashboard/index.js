@@ -1,15 +1,14 @@
-import React, {useCallback, useEffect, useState} from "react";
-import { useDispatch } from "react-redux";
+import React, {useEffect, useState} from "react";
 // import { useSelector } from "react-redux";
 import api from "../../APIs/api";
 
-
 import NavPlaceHolder from "../../Components/common/NavPlaceholder";
-import { addTask } from "../../Redux/Actions/actionCreator";
+import TableInput from "../../Components/Table/TableInput/Index";
+import TableRow from "../../Components/Table/TableRow";
 
 function Dashboard () {
+  //proxy user
   const user_id = 1
-
 
   const INITIAL_STATE = {
     user_id: user_id,
@@ -22,42 +21,21 @@ function Dashboard () {
   const [tasks, setTasks] = useState([])
   const [newTask, setNewTask] = useState(INITIAL_STATE)
   
-  const handleInputChange = e => {
-    const {name, value, type} = e.target
-    // if(type === 'date') {
-    //   setNewTask({
-    //     ...newTask,
-    //     [name]: new Date(value)
-    //   })
-
-    // }
-    setNewTask({
-      ...newTask,
-      [name]: value
-    })
-  }
-
+  
   useEffect(() => {
     api.get(`tasks?user_id=${user_id}`).then(res => {
       const filteredData = res.data.filter(item => item.user_id === user_id)
       setTasks(filteredData[0].user_tasks)
     })}, [])
-  
-  //Disponibilizar o dispatch para fazer o realizar as ações
-  const dispatch = useDispatch() 
-  //Action de adicionar as tasks
-  const handleAddTask = useCallback((task)=>{
-    if(!task.task_title) {
-       return alert('Every task needs a title.')
-    }
-    if(!task.task_deadline) {
-       return alert('You need to assign a deadline.')
-    }
-    dispatch(addTask(task))
-    setNewTask(INITIAL_STATE)
     
-  },[INITIAL_STATE, dispatch])
-  
+    const handleInputChange = e => {
+      const {name, value} = e.target
+      setNewTask({
+        ...newTask,
+        [name]: value
+      })
+    }
+
   return (
     <>
       <NavPlaceHolder />
@@ -73,68 +51,9 @@ function Dashboard () {
               </tr>
             </thead>
             <tbody className="tasksTable__body">
-              <tr>
-                <td>
-                  <input 
-                    name='task_title' 
-                    type="text"
-                    value={newTask.task_title}
-                    onChange={handleInputChange}
-                  />
-                </td>
-                <td 
-                    name='user_id'>
-                    {user_id}
-                </td>
-                <td>
-                  <input 
-                    name='task_start' 
-                    type="date" 
-                    value={newTask.task_start}
-                    max={newTask.task_deadline}
-                    onChange={handleInputChange}
-                  />
-                </td>
-                <td>
-                  <input 
-                    name='task_deadline' 
-                    type="date"
-                    value={newTask.task_deadline}
-                    min={newTask.task_start}
-                    onChange={handleInputChange}
-                  />
-                </td>
-                <td>
-                <textarea 
-                    name='task_description' 
-                    type="text"
-                    placeholder='Description'
-                    value={newTask.task_description}
-                    onChange={handleInputChange}
-                  />
-                </td>
-                <td>
-                  <button 
-                    type='button'
-                    onClick={() => handleAddTask(newTask)}
-                  >
-                    Add
-                  </button>
-                </td>
-              </tr>  
-            {tasks.map(task => (
-              <tr key={task.task_id}>
-                <td>{task.task_title}</td>
-                <td>{user_id}</td>
-                <td>{task.task_start}</td>
-                <td>{task.task_deadline}</td>
-                <td>{task.task_status}</td>
-                <td>
-                  <button type='button'>Complete</button>
-                  <button type='button'>Edit</button>
-                  <button type='button'>Delete</button>
-                </td>
-              </tr>  
+              <TableInput props={{newTask, handleInputChange, user_id, setNewTask, INITIAL_STATE}} />
+              {tasks.map(task => (
+              <TableRow props={{task, user_id}} key={task.task_id}/>
             ))}
             </tbody>
           </table>
