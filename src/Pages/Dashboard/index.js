@@ -47,6 +47,12 @@ function Dashboard () {
   const dispatch = useDispatch() 
   //Action de adicionar as tasks
   const handleAddTask = useCallback((task)=>{
+    if(!task.task_title) {
+       return alert('Every task needs a title.')
+    }
+    if(!task.task_deadline) {
+       return alert('You need to assign a deadline.')
+    }
     dispatch(addTask(task))
     setNewTask(INITIAL_STATE)
     
